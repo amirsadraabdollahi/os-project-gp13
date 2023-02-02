@@ -219,6 +219,8 @@ Create a new file:
 */
 int fs_create(const char *filename) {
 
+    //todo: Lock
+
 	// perform error checking first 
 	if(error_free(filename) == false) {
 		fs_error("error associated with filename");
@@ -233,10 +235,12 @@ int fs_create(const char *filename) {
 			strcpy(root_dir_block[i].filename, filename);
 			root_dir_block[i].file_size     = 0;
 			root_dir_block[i].start_data_block = EOC;
-
+            //todo: Unlock
 			return 0;
 		}
 	}
+    //todo: Unlock
+
 	return -1;
 }
 
