@@ -27,7 +27,7 @@ CUR_PWD := $(shell pwd)
 CC	= gcc
 
 # General gcc options
-CFLAGS	:= -Wall -Werror 
+CFLAGS	:= -Wall -pthread
 CFLAGS	+= -O2
 #CFLAGS	+= -O0
 #CFLAGS	+= -g

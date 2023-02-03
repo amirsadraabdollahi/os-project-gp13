@@ -2,7 +2,7 @@ TARGET  := libuthread.a
 OBJS    := queue.o disk.o fs.o context.o uthread.o
 
 CC      := gcc 
-CFLAGS  := -Werror 
+CFLAGS  := -pthread
 CFLAGS  += -Wall 
 CFLAGS  += -g 
 CFLAGS  += -c

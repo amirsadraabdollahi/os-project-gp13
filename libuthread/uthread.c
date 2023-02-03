@@ -167,12 +167,10 @@ void uthread_start(uthread_func_t start, void *arg)
 
 	// initialize queue
 	queue = queue_create();
-	
 	if (queue == NULL) {
 		fprintf(stderr, "Failure to allocate memory to queue.\n");
 		return;
 	}
-
 	// initialize main idle thread and current thread
 	struct uthread_tcb* idle_thread = 
 				(struct uthread_tcb*)malloc(sizeof(struct uthread_tcb));
@@ -180,7 +178,6 @@ void uthread_start(uthread_func_t start, void *arg)
 		fprintf(stderr, "Failure to allocate memory to thread tcb.\n");
 		return;
 	}
-
 	// initialize thread properties
 	idle_thread->context = (uthread_ctx_t *)malloc(sizeof(uthread_ctx_t));
 	if (idle_thread->context == NULL) {
@@ -192,13 +189,13 @@ void uthread_start(uthread_func_t start, void *arg)
 
 	// set current thread to
 	curThread = idle_thread;
-
 	if(uthread_create(start, arg) == -1) {
 		fprintf(stderr, "Error: fail to create idle_thread.\n");
 		return ;
 	}
 
-	// set idle 
-	while(queue_length(queue) != 0) 
-		uthread_yield();
+    // set idle
+    while(queue_length(queue) != 0) {
+        uthread_yield();
+    }
 }

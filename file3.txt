@@ -1,4 +1,3 @@
 Test file3 for virtualdisk
 Line
-Line
-Line
+
